@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>El Palacio de las Delicias</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { overflow-x: hidden; }
+    nav { min-width: 230px; }
+    header { background-color: #6c8c7d; }
+    .busqueda-input { max-width: 300px; }
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<header class="text-white p-3 d-flex justify-content-between align-items-center" style="background-color: #6c8c7d;">
+  <div class="d-flex align-items-center">
+    <img src="img/logo.png" width="80" height="80" class="me-2">
+    <span class="fs-4 fw-bold">El Palacio de las Delicias</span>
+  </div>
+  <input type="text" id="searchGlobal" class="form-control busqueda-input" placeholder="Buscar en la página...">
+</header>
+<div class="d-flex">
+  <nav class="bg-primary text-white p-3 vh-70">
+    <ul class="nav flex-column">
+      <li><a href="index.html" class="nav-link text-white"><i class="fas fa-home me-2"></i>Inicio</a></li>
+      <li><a href="dashboard.html" class="nav-link text-white"><i class="fas fa-chart-line me-2"></i>Dashboard</a></li>
+      <li><a href="inventario.html" class="nav-link text-white"><i class="fas fa-cubes me-2"></i>Inventario</a></li>
+      <li><a href="proveedores.html" class="nav-link text-white"><i class="fas fa-truck me-2"></i>Proveedores</a></li>
+      <li><a href="facturacion.html" class="nav-link text-white"><i class="fas fa-receipt me-2"></i>Facturación</a></li>
+      <li><a href="parametrizacion.html" class="nav-link text-white"><i class="fas fa-wrench me-2"></i>Configuracion</a></li>
+    </ul>
+  </nav>
+  <main class="p-4 flex-grow-1 fade-in" id="contenido">
+<div class="text-center">
+  <img src="img/logo.png" alt="Logo" width="100" class="mb-4">
+  <h2 class="text-primary">Bienvenido a El Palacio de las Delicias</h2>
+  <p class="lead">Sistema de gestión para heladerías. Usa el menú lateral para acceder a los diferentes módulos.</p>
+</div>
+<hr>
+<div class="row g-4">
+  <div class="col-md-6">
+    <div class="card border-primary shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-sliders-h me-2"></i>Módulo de Parametrización</h5>
+        <ul>
+          <li>Gestión de usuarios / empleados</li>
+          <li>Creación de Proveedores</li>
+          <li>Creación de Clientes</li>
+          <li>Configuración de permisos, seguridad y credenciales</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-success shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-truck-loading me-2"></i>Módulo de Abastecimiento</h5>
+        <ul>
+          <li>Órdenes de compra (crear, modificar, anular)</li>
+          <li>Registro y anulación de ingresos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-warning shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-cash-register me-2"></i>Módulo de Ventas</h5>
+        <ul>
+          <li>Facturación (generación y anulación)</li>
+          <li>Notas de crédito y débito</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card border-info shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-boxes me-2"></i>Módulo de Inventarios y Reportes</h5>
+        <ul>
+          <li>Creación y ajustes de productos</li>
+          <li>Informes de ventas, compras, stocks y más</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+<script>
+document.getElementById('searchGlobal').addEventListener('input', function () {
+  const text = this.value.toLowerCase();
+  document.querySelectorAll('#contenido *').forEach(el => {
+    if (el.textContent.toLowerCase().includes(text)) {
+      el.style.display = '';
+    } else if (el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE') {
+      el.style.display = 'none';
+    }
+  });
+});
+</script>
+<footer class="bg-primary text-white text-center p-3 vh-20">
+  <p class="mb-0">&copy; 2025 Pabell - Software y Tecnología | Desarrollado por Edward Herrera y Alejandra Palacios - ADSO 2377388 - SENA</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,91 @@
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>El Palacio de las Delicias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body { overflow-x: hidden; }
+      nav { min-width: 230px; }
+      header { background-color: #6c8c7d; }
+      .busqueda-input { max-width: 300px; }
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  </style>
+  </head>
+  <body>
+  <header class="text-white p-3 d-flex justify-content-between align-items-center" style="background-color: #6c8c7d;">
+    <div class="d-flex align-items-center">
+      <img src="img/logo.png" width="80" height="80" class="me-2">
+      <span class="fs-4 fw-bold">El Palacio de las Delicias</span>
+    </div>
+    <input type="text" id="searchGlobal" class="form-control busqueda-input" placeholder="Buscar en la página...">
+  </header>
+  <div class="d-flex">
+    <nav class="bg-primary text-white p-3 vh-100">
+      <ul class="nav flex-column">
+        <li><a href="index.html" class="nav-link text-white"><i class="fas fa-home me-2"></i>Inicio</a></li>
+        <li><a href="inventario.html" class="nav-link text-white"><i class="fas fa-cubes me-2"></i>Inventario</a></li>
+        <li><a href="proveedores.html" class="nav-link text-white"><i class="fas fa-truck me-2"></i>Proveedores</a></li>
+        <li><a href="facturacion.html" class="nav-link text-white"><i class="fas fa-receipt me-2"></i>Facturación</a></li>
+      </ul>
+    </nav>
+    <main class="p-4 flex-grow-1 fade-in" id="contenido">
+      
+  <h2>Inventario</h2>
+  <form onsubmit="agregarProducto(); return false;" class="mb-4">
+    <div class="row">
+      <div class="col-md-4"><input placeholder="Producto" id="prod" class="form-control mb-2"></div>
+      <div class="col-md-4"><input placeholder="Cantidad" id="cant" type="number" class="form-control mb-2"></div>
+      <div class="col-md-4"><input placeholder="Precio" id="precio" type="number" class="form-control mb-2"></div>
+    </div>
+    <button class="btn btn-primary">Agregar</button>
+  </form>
+  <ul class="list-group" id="listaInventario"></ul>
+  <script>
+  function agregarProducto() {
+    const p = document.getElementById('prod').value;
+    const c = document.getElementById('cant').value;
+    const pr = document.getElementById('precio').value;
+    const item = document.createElement('li');
+    item.className = 'list-group-item';
+    item.textContent = `${p} - ${c} und - $${pr}`;
+    document.getElementById('listaInventario').appendChild(item);
+  }
+  </script>
+
+    
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="toastOK" class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Acción realizada con éxito</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+  </main>
+  </div>
+  <script>
+  document.getElementById('searchGlobal').addEventListener('input', function () {{
+    const text = this.value.toLowerCase();
+    document.querySelectorAll('#contenido *').forEach(el => {{
+      if (el.textContent.toLowerCase().includes(text)) {{
+        el.style.display = '';
+      }} else if (el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE') {{
+        el.style.display = 'none';
+      }}
+    }});
+  }});
+  </script>
+  <footer class="bg-primary text-white text-center p-3 vh-20">
+    <p class="mb-0">&copy; 2025 Pabell - Software y Tecnología | Desarrollado por Edward Herrera y Alejandra Palacios - ADSO 2377388 - SENA</p>
+    </footer>
+  </body>
+  </html>
